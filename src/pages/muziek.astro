@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const albums = [
+  {
+    title: "It's All In The Blues",
+    artist: 'Little Boogie Boy Bluesband',
+    cover: '/images/hero.jpg',
+    description: 'Een gitarist en zanger die klinkt als ervaren, en wanneer je met gesloten ogen luistert, word je teruggebracht naar de hoogtijdagen van de Chicago blues.',
+    review: 'Het grootste compliment dat je de band kunt geven: ze spelen blues zo simpel en puur als het ooit bedoeld was.',
+    source: 'Blues Magazine NL',
+  },
+  {
+    title: 'Blues In My Bedroom',
+    artist: 'Little Boogie Boy Bluesband',
+    cover: '/images/guitar-closeup.jpg',
+    description: 'Slow blues die donker, puur en authentiek klinkt. Een plaat die je mee naar binnen trekt en niet meer loslaat.',
+    review: 'Klinkt donker, puur en authentiek — de sfeer zit er dik in van het eerste tot het laatste nummer.',
+    source: 'Blues Magazine NL',
+  },
+];
+---
+
+<Layout title="Muziek & CD's — Little Boogie Boy" description="Albums en muziek van Little Boogie Boy Bluesband.">
+
+  <section class="relative h-64 flex items-end overflow-hidden pt-20">
+    <div class="absolute inset-0">
+      <img src="/images/guitar-closeup.jpg" alt="Gitaar" class="w-full h-full object-cover object-center" />
+      <div class="absolute inset-0 bg-gradient-to-b from-dark/60 to-dark"></div>
+    </div>
+    <div class="relative z-10 px-6 pb-12 max-w-7xl mx-auto w-full">
+      <span class="section-label">Discografie</span>
+      <h1 class="font-display text-5xl md:text-6xl text-cream">Muziek</h1>
+    </div>
+  </section>
+
+  <section class="py-20 px-6">
+    <div class="max-w-7xl mx-auto space-y-20">
+      {albums.map((album, i) => (
+        <div class={`grid md:grid-cols-2 gap-12 items-center ${i % 2 === 1 ? 'md:grid-flow-dense' : ''}`}>
+          <div class={`relative ${i % 2 === 1 ? 'md:col-start-2' : ''}`}>
+            <img src={album.cover} alt={album.title} class="w-full aspect-square object-cover" />
+            <div class="absolute -bottom-3 -right-3 w-16 h-16 border border-gold/30"></div>
+          </div>
+          <div>
+            <span class="section-label">Album</span>
+            <h2 class="font-display text-4xl md:text-5xl text-cream mb-2 italic">{album.title}</h2>
+            <p class="text-cream/40 text-sm tracking-widest uppercase mb-8">{album.artist}</p>
+            <p class="text-cream/60 leading-relaxed mb-8">{album.description}</p>
+            <blockquote class="border-l-2 border-gold pl-4 mb-8">
+              <p class="text-cream/70 italic">"{album.review}"</p>
+              <cite class="text-gold text-xs tracking-widest uppercase not-italic mt-2 block">— {album.source}</cite>
+            </blockquote>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Listen online -->
+  <section class="py-16 px-6 bg-dark-3">
+    <div class="max-w-3xl mx-auto text-center">
+      <span class="section-label">Online luisteren</span>
+      <h2 class="font-display text-4xl text-cream mb-6">Te vinden op</h2>
+      <p class="text-cream/50 mb-10">Zoek naar <strong class="text-cream">"Little Boogie Boy"</strong> op jouw favoriete platform.</p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        {[
+          { name: 'Spotify', url: 'https://open.spotify.com/search/Little%20Boogie%20Boy' },
+          { name: 'Apple Music', url: 'https://music.apple.com/search?term=little+boogie+boy' },
+          { name: 'YouTube', url: 'https://www.youtube.com/results?search_query=little+boogie+boy' },
+        ].map(p => (
+          <a href={p.url} target="_blank" rel="noopener" class="btn-ghost">{p.name}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>

@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-dark text-cream font-body antialiased; }
+  h1, h2, h3, h4 { @apply font-display; }
+}
+
+@layer components {
+  .btn-gold {
+    @apply inline-block px-8 py-3 border border-gold text-gold hover:bg-gold hover:text-dark transition-all duration-300 tracking-widest text-sm uppercase font-medium;
+  }
+  .btn-ghost {
+    @apply inline-block px-8 py-3 border border-cream/30 text-cream hover:border-gold hover:text-gold transition-all duration-300 tracking-widest text-sm uppercase;
+  }
+  .section-label {
+    @apply text-gold tracking-[0.3em] text-xs uppercase mb-4 block;
+  }
+}

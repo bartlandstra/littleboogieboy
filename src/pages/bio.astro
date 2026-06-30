@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Band Bio — Little Boogie Boy" description="Het verhaal van Hein 'Little Boogie Boy' Meijer en zijn band.">
+
+  <!-- Page hero -->
+  <section class="relative h-72 md:h-96 flex items-end overflow-hidden pt-20">
+    <div class="absolute inset-0">
+      <img src="/images/stage.jpg" alt="Little Boogie Boy op het podium" class="w-full h-full object-cover object-top" />
+      <div class="absolute inset-0 bg-gradient-to-b from-dark/40 via-dark/30 to-dark"></div>
+    </div>
+    <div class="relative z-10 px-6 pb-12 max-w-7xl mx-auto w-full">
+      <span class="section-label">De band</span>
+      <h1 class="font-display text-5xl md:text-6xl text-cream">Band Bio</h1>
+    </div>
+  </section>
+
+  <!-- Bio content -->
+  <section class="py-20 px-6">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-5 gap-16">
+
+      <!-- Text -->
+      <div class="md:col-span-3 space-y-6 text-cream/70 leading-relaxed text-lg">
+        <p>
+          Hein Meijer — beter bekend als <strong class="text-cream">Little Boogie Boy</strong> — is een van de meest markante bluesgitaristen en -zangers van Nederland. Zijn muziek is diepgeworteld in de Chicago blues-traditie: rauw, eerlijk en doordrenkt van gevoel.
+        </p>
+        <p>
+          De naam "Little Boogie Boy" verwijst niet alleen naar zijn speelstijl, maar ook naar de houding waarmee hij muziek benadert: klein in ego, groot in passie. Hein leerde de blues kennen via de klassieke platen van Muddy Waters, B.B. King en Little Walter — muziek die hem nooit meer losliet.
+        </p>
+        <p>
+          De Little Boogie Boy Bluesband speelt zowel origineel materiaal als bewerkingen van klassiekers, altijd met respect voor de wortels maar zonder bang te zijn voor eigen kleur. De band is drie keer genomineerd voor de <strong class="text-cream">Dutch Blues Awards</strong> in de categorieën beste gitarist en beste zanger.
+        </p>
+        <p>
+          Van intieme café-concerten tot grote festivals: Little Boogie Boy brengt altijd dezelfde energie. De band bestaat naast Hein uit een vaste kern van bevlogen muzikanten die al jaren samen spelen. Het resultaat is een geluid dat klinkt als een volledig ensemble — compact, krachtig en onmiskenbaar live.
+        </p>
+
+        <blockquote class="border-l-2 border-gold pl-6 py-2 my-8">
+          <p class="text-cream/80 italic font-display text-2xl leading-snug">
+            "Blues zo simpel en puur als het ooit bedoeld was."
+          </p>
+          <cite class="text-gold text-xs tracking-widest uppercase not-italic mt-3 block">— Blues Magazine NL</cite>
+        </blockquote>
+
+        <p>
+          De band is ook te boeken voor festivals, theaterprogramma's en privé-evenementen. Neem contact op voor meer informatie over de <a href="/mogelijkheden" class="text-gold hover:underline">mogelijkheden</a>.
+        </p>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="md:col-span-2 space-y-8">
+        <img src="/images/band.jpg" alt="Little Boogie Boy band" class="w-full aspect-square object-cover" />
+        <div class="border border-white/10 p-6 space-y-4">
+          <h3 class="font-display text-xl text-cream">In het kort</h3>
+          <dl class="space-y-3 text-sm">
+            {[
+              { label: 'Genre', value: 'Chicago Blues' },
+              { label: 'Herkomst', value: 'Nederland' },
+              { label: 'Bezetting', value: 'Trio / Quartet' },
+              { label: 'Nominaties', value: '3x Dutch Blues Awards' },
+              { label: 'Albums', value: '"It\'s All In The Blues" & "Blues In My Bedroom"' },
+            ].map(item => (
+              <div class="flex gap-3">
+                <dt class="text-cream-muted w-24 flex-none">{item.label}</dt>
+                <dd class="text-cream/80">{item.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <a href="/contact" class="btn-gold w-full text-center block">Boek de band</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo grid -->
+  <section class="py-12 px-6 bg-dark-3">
+    <div class="max-w-7xl mx-auto">
+      <span class="section-label">Foto's</span>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {['/images/live-guitar.jpg', '/images/harmonica.jpg', '/images/guitar-closeup.jpg', '/images/concert1.jpg'].map(src => (
+          <div class="aspect-square overflow-hidden">
+            <img src={src} alt="Little Boogie Boy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 grayscale hover:grayscale-0" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>

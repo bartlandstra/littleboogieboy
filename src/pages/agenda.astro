@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const shows = [
+  { date: '2026-07-02', day: 'Donderdag', time: '20:00', event: 'Blues Session Red Kees', venue: 'Leimuiderbrug', city: 'Leimuiderbrug' },
+  { date: '2026-07-25', day: 'Zaterdag', time: '17:00', event: 'All American Sunday / Drinken Enzo', venue: 'Drinken Enzo', city: 'Uithoorn' },
+  { date: '2026-07-26', day: 'Zondag', time: '12:00', event: 'All American Day', venue: 'All American Day', city: 'Uithoorn' },
+  { date: '2026-08-22', day: 'Zaterdag', time: 'TBA', event: 'Kat Riggins Blues Revival / Blues in the Garden', venue: 'Blues in the Garden', city: 'Dărmănești, RO' },
+  { date: '2026-08-23', day: 'Zondag', time: '20:00', event: 'Kat Riggins Blues Revival / Swing Blues', venue: 'Swing Blues', city: 'Wespelaar, BE' },
+  { date: '2026-09-05', day: 'Zaterdag', time: 'TBA', event: 'Tapperij de Verwachting', venue: 'Tapperij de Verwachting', city: 'Assendelft' },
+  { date: '2026-09-19', day: 'Zaterdag', time: '20:00', event: 'LBB & Bart Landstra', venue: 'CPUNT Cafe', city: 'Hoofddorp' },
+  { date: '2026-09-20', day: 'Zondag', time: '15:00', event: 'LBB, Landstra, den Boer / Kunstroute', venue: 'Kunstroute Aalsmeer', city: 'Aalsmeer' },
+  { date: '2026-09-25', day: 'Vrijdag', time: 'TBA', event: 'LBB Solo / Bluescruise Ter Schelling', venue: 'Bluescruise', city: 'Harlingen' },
+  { date: '2026-09-26', day: 'Zaterdag', time: 'TBA', event: 'LBB Solo / Bluescruise Ter Schelling', venue: 'Bluescruise', city: 'Ter Schelling' },
+  { date: '2026-10-03', day: 'Zaterdag', time: 'TBA', event: 'European Blues Aces feat. Johnny Burgin', venue: 'Blues Heaven', city: 'Frederikshavn, DK' },
+  { date: '2026-10-31', day: 'Zaterdag', time: 'TBA', event: 'Legendary Bluesband', venue: 'TBA', city: 'TBA' },
+  { date: '2026-11-06', day: 'Vrijdag', time: 'TBA', event: 'Optreden Rotterdam', venue: 'TBA', city: 'Rotterdam' },
+  { date: '2026-11-08', day: 'Zondag', time: '17:00', event: "LBB Solo", venue: "Lemmy's Biercafe", city: 'Leiden' },
+  { date: '2026-11-12', day: 'Donderdag', time: '20:00', event: "Check's Achter de Kerk", venue: "Check's Achter de Kerk", city: 'Gouda' },
+];
+
+const months: Record<string, typeof shows> = {};
+for (const show of shows) {
+  const month = new Date(show.date).toLocaleString('nl-NL', { month: 'long', year: 'numeric' });
+  const key = month.charAt(0).toUpperCase() + month.slice(1);
+  if (!months[key]) months[key] = [];
+  months[key].push(show);
+}
+---
+
+<Layout title="Agenda — Little Boogie Boy" description="Aankomende concerten en optredens van Little Boogie Boy in 2026.">
+
+  <section class="relative h-64 flex items-end overflow-hidden pt-20">
+    <div class="absolute inset-0">
+      <img src="/images/concert2.jpg" alt="Concert" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-b from-dark/50 to-dark"></div>
+    </div>
+    <div class="relative z-10 px-6 pb-12 max-w-7xl mx-auto w-full">
+      <span class="section-label">Optredens 2026</span>
+      <h1 class="font-display text-5xl md:text-6xl text-cream">Agenda</h1>
+    </div>
+  </section>
+
+  <section class="py-20 px-6">
+    <div class="max-w-3xl mx-auto space-y-16">
+
+      {Object.entries(months).map(([month, monthShows]) => (
+        <div>
+          <h2 class="font-display text-2xl text-gold mb-6 pb-3 border-b border-white/10">{month}</h2>
+          <div class="divide-y divide-white/5">
+            {monthShows.map(show => (
+              <div class="py-5 flex items-start gap-6 group hover:bg-white/2 -mx-4 px-4 transition-colors rounded">
+                <div class="text-center w-12 flex-none">
+                  <p class="text-gold font-display text-3xl leading-none">
+                    {new Date(show.date).getDate()}
+                  </p>
+                  <p class="text-cream/30 text-xs mt-1">{show.day.slice(0, 2)}</p>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-cream font-medium truncate">{show.event}</p>
+                  <p class="text-cream/50 text-sm mt-0.5">{show.venue} &mdash; {show.city}</p>
+                </div>
+                <div class="text-right flex-none">
+                  <p class="text-cream/40 text-sm">{show.time}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <div class="p-8 border border-gold/20 bg-gold/5 text-center">
+        <p class="text-cream/60 text-sm mb-1">Wil je Little Boogie Boy boeken?</p>
+        <h3 class="font-display text-2xl text-cream mb-5">Neem contact op</h3>
+        <a href="/contact" class="btn-gold">Stuur een bericht</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

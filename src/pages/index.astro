@@ -1,0 +1,120 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Little Boogie Boy — Chicago Blues uit Nederland">
+
+  <!-- Hero -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="/images/hero.jpg" alt="Little Boogie Boy live" class="w-full h-full object-cover object-center" />
+      <div class="absolute inset-0 bg-gradient-to-b from-dark/70 via-dark/50 to-dark"></div>
+    </div>
+    <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+      <p class="section-label mb-6">Chicago Blues uit Nederland</p>
+      <h1 class="font-display text-6xl md:text-8xl lg:text-9xl text-cream leading-none mb-6">
+        Little<br/><em class="text-gold not-italic">Boogie Boy</em>
+      </h1>
+      <p class="text-cream/70 text-lg md:text-xl max-w-xl mx-auto mb-10 font-light">
+        Hein Meijer brengt authentieke Chicago blues — rauw, puur en rechtstreeks uit het hart.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/agenda" class="btn-gold">Bekijk agenda</a>
+        <a href="/muziek" class="btn-ghost">Luister muziek</a>
+      </div>
+    </div>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+      <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="py-24 px-6">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <div>
+        <span class="section-label">Over de band</span>
+        <h2 class="font-display text-4xl md:text-5xl text-cream mb-6">
+          Blues zo puur als het<br/><em class="text-gold">ooit bedoeld was</em>
+        </h2>
+        <p class="text-cream/60 leading-relaxed mb-4">
+          Little Boogie Boy is Hein Meijer — gitarist, zanger en bezieler van een van de meest gewaardeerde
+          blues bands van Nederland. Zijn muziek ademt Chicago, maar wortelt in de Hollandse polder.
+        </p>
+        <p class="text-cream/60 leading-relaxed mb-8">
+          Drie keer genomineerd voor de Dutch Blues Awards (beste gitarist & beste zanger). Met een handvol
+          muzikanten speelt hij een set die klinkt als een volledig ensemble — intiem, krachtig en onvervangbaar live.
+        </p>
+        <a href="/bio" class="btn-gold">Lees meer</a>
+      </div>
+      <div class="relative">
+        <img src="/images/live-guitar.jpg" alt="Hein Meijer speelt gitaar"
+          class="w-full aspect-[3/4] object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+        <div class="absolute -bottom-4 -left-4 w-24 h-24 border border-gold opacity-30"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="py-24 px-6 bg-dark-3">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="section-label">Pers & recensies</span>
+        <h2 class="font-display text-4xl md:text-5xl text-cream">Wat ze zeggen</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        {[
+          {
+            quote: 'Het grootste compliment dat je de Little Boogie Boy Bluesband kunt geven: ze spelen blues zo simpel en puur als het ooit bedoeld was.',
+            source: 'Blues Magazine NL',
+          },
+          {
+            quote: 'Klinkt donker, puur en authentiek. Als je met gesloten ogen luistert, word je teruggebracht naar de hoogtijdagen van de Chicago blues.',
+            source: 'Blues Magazine NL',
+          },
+          {
+            quote: 'Goud voor de Nederlandse bluesscene — drie man die spelen als een volledig ensemble. Gedreven, spontaan en opwindend van begin tot eind.',
+            source: 'Dutch Blues Foundation',
+          },
+        ].map(r => (
+          <div class="border border-white/10 p-8 hover:border-gold/30 transition-colors duration-300">
+            <svg class="w-8 h-8 text-gold/40 mb-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+            </svg>
+            <p class="text-cream/70 italic leading-relaxed mb-6">"{r.quote}"</p>
+            <p class="text-gold text-xs tracking-widest uppercase">— {r.source}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo strip -->
+  <section class="py-4 overflow-hidden">
+    <div class="flex gap-4">
+      {['/images/guitar-closeup.jpg', '/images/harmonica.jpg', '/images/band.jpg', '/images/concert1.jpg'].map(src => (
+        <div class="flex-none w-64 md:w-80 h-48 md:h-64 overflow-hidden">
+          <img src={src} alt="Little Boogie Boy live" class="w-full h-full object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-700" />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-32 px-6 text-center relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-radial from-gold/5 via-transparent to-transparent"></div>
+    <div class="relative z-10 max-w-2xl mx-auto">
+      <span class="section-label">Boek de band</span>
+      <h2 class="font-display text-4xl md:text-5xl text-cream mb-6">
+        Little Boogie Boy op jouw podium?
+      </h2>
+      <p class="text-cream/60 mb-10 leading-relaxed">
+        Van intiem café-concert tot groot festival — de band past zich aan elk podium aan.
+        Neem contact op voor beschikbaarheid en tarieven.
+      </p>
+      <a href="/contact" class="btn-gold">Neem contact op</a>
+    </div>
+  </section>
+
+</Layout>

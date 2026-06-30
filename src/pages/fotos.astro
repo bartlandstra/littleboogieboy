@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const photos = [
+  { src: '/images/hero.jpg', alt: 'Little Boogie Boy live op het podium' },
+  { src: '/images/live-guitar.jpg', alt: 'Hein Meijer speelt gitaar' },
+  { src: '/images/guitar-closeup.jpg', alt: 'Close-up gitaar' },
+  { src: '/images/band.jpg', alt: 'De band' },
+  { src: '/images/harmonica.jpg', alt: 'Mondharmonica op het podium' },
+  { src: '/images/concert1.jpg', alt: 'Concert' },
+  { src: '/images/concert2.jpg', alt: 'Live optreden' },
+  { src: '/images/stage.jpg', alt: 'Op het podium' },
+  { src: '/images/stage2.jpg', alt: 'Podium sfeer' },
+  { src: '/images/concert3.jpg', alt: 'Concert sfeer' },
+  { src: '/images/concert4.jpg', alt: 'Live muziek' },
+];
+---
+
+<Layout title="Foto's — Little Boogie Boy" description="Fotogalerij van Little Boogie Boy live.">
+
+  <section class="relative h-64 flex items-end overflow-hidden pt-20">
+    <div class="absolute inset-0">
+      <img src="/images/stage2.jpg" alt="Podium" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-b from-dark/60 to-dark"></div>
+    </div>
+    <div class="relative z-10 px-6 pb-12 max-w-7xl mx-auto w-full">
+      <span class="section-label">Galerij</span>
+      <h1 class="font-display text-5xl md:text-6xl text-cream">Foto's</h1>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+        {photos.map(photo => (
+          <div class="break-inside-avoid overflow-hidden group cursor-pointer">
+            <img
+              src={photo.src}
+              alt={photo.alt}
+              class="w-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>

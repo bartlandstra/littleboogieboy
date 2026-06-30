@@ -1,0 +1,76 @@
+---
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/bio', label: 'Bio' },
+  { href: '/muziek', label: 'Muziek' },
+  { href: '/agenda', label: 'Agenda' },
+  { href: '/fotos', label: "Foto's" },
+  { href: '/contact', label: 'Contact' },
+];
+const current = Astro.url.pathname;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="nav">
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+    <a href="/" class="font-display text-xl text-cream hover:text-gold transition-colors">
+      Little Boogie Boy
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-8">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class={`text-xs tracking-widest uppercase transition-colors duration-200 ${
+            current === link.href ? 'text-gold' : 'text-cream/70 hover:text-gold'
+          }`}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Mobile hamburger -->
+    <button id="menu-btn" class="md:hidden text-cream" aria-label="Menu">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path id="icon-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+          d="M4 6h16M4 12h16M4 18h16"/>
+        <path id="icon-close" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+          d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-dark-2 border-t border-white/10">
+    <nav class="flex flex-col px-6 py-6 gap-5">
+      {navLinks.map(link => (
+        <a href={link.href} class="text-xs tracking-widest uppercase text-cream/70 hover:text-gold transition-colors">
+          {link.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<script>
+  const nav = document.getElementById('nav')!;
+  const btn = document.getElementById('menu-btn')!;
+  const menu = document.getElementById('mobile-menu')!;
+  const iconOpen = document.getElementById('icon-open')!;
+  const iconClose = document.getElementById('icon-close')!;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      nav.classList.add('bg-dark/95', 'backdrop-blur-md', 'border-b', 'border-white/5');
+    } else {
+      nav.classList.remove('bg-dark/95', 'backdrop-blur-md', 'border-b', 'border-white/5');
+    }
+  });
+
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+  });
+</script>
