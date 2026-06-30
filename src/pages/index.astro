@@ -5,13 +5,19 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Little Boogie Boy — Chicago Blues uit Nederland">
 
   <!-- Hero -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <section class="relative w-full overflow-hidden" style="height: 100dvh; min-height: 600px;">
     <div class="absolute inset-0">
-      <img src="/images/stage2.jpg" alt="Little Boogie Boy live" class="w-full h-full object-cover object-top" />
-      <div class="absolute inset-0 bg-gradient-to-b from-dark/70 via-dark/50 to-dark"></div>
+      <img
+        src="/images/stage2.jpg"
+        alt="Little Boogie Boy live"
+        class="w-full h-full object-cover"
+        style="object-position: center 18%;"
+      />
+      <!-- Dark vignette: subtle top, strong bottom for text legibility -->
+      <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(10,10,10,0.25) 0%, rgba(10,10,10,0.1) 35%, rgba(10,10,10,0.55) 70%, rgba(10,10,10,0.95) 100%);"></div>
     </div>
-    <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
-      <p class="section-label mb-6">Chicago Blues uit Nederland</p>
+    <div class="absolute bottom-0 left-0 right-0 z-10 text-center px-6 pb-20 max-w-4xl mx-auto" style="left:50%;transform:translateX(-50%);">
+      <p class="section-label mb-4">Chicago Blues uit Nederland</p>
       <h1 class="font-display text-6xl md:text-8xl lg:text-9xl text-cream leading-none mb-6">
         Little<br/><em class="text-gold not-italic">Boogie Boy</em>
       </h1>
